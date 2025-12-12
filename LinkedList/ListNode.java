@@ -1,6 +1,6 @@
 package LinkedList;
 //here are some of the leetcode solutions 
-//Question:234
+//Question:234 isPalindrome?
  public class ListNode {
        int val;
        ListNode next;
@@ -91,6 +91,8 @@ class Solution {
         display(r1);
         sol.reorderList(r1);
         display(r1);
+        sol.removeNthFromEnd(r1, 2);
+        display(r1);
     }
 
 
@@ -114,6 +116,8 @@ class Solution {
             hf.next=null;
         }
     }
+
+    
     //Leetcode question 61 Rotate List;
     public ListNode rotateRight(ListNode head, int k) {
         if(k<=0||head==null||head.next==null){
@@ -134,6 +138,30 @@ class Solution {
         }
         head=newlast.next;
         newlast.next=null;
+        return head;
+    }
+
+
+
+
+
+
+
+
+//leetcode question 19:TO remove Nth node from the end of a list;
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        int count=0;
+        ListNode slow=head;
+        ListNode temp=head;
+        while(temp!=null){
+            temp=temp.next;
+            count++;
+        }
+        int num=count-n;
+        for(int i=1;i<num;i++){
+            slow=slow.next;
+        }
+        slow.next=slow.next.next;
         return head;
     }
 }
